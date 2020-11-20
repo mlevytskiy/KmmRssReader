@@ -36,6 +36,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 
     compileOptions {
@@ -44,8 +45,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
+        useIR = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.0-alpha07"
+        kotlinCompilerVersion = "1.4.0"
     }
 }
 
@@ -53,6 +61,15 @@ dependencies {
     implementation(project(":shared"))
     //desugar utils
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
+    //compose
+    val composeVersion = "1.0.0-alpha07"
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    val accompanistVersion = "0.3.3.1"
+    implementation("dev.chrisbanes.accompanist:accompanist-coil:$accompanistVersion")
+    implementation("dev.chrisbanes.accompanist:accompanist-insets:$accompanistVersion")
     //UI
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.2.1")
