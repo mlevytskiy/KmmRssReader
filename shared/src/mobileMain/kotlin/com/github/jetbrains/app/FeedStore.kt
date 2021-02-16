@@ -45,6 +45,8 @@ class FeedStore(
 
     override fun dispatch(action: FeedAction) {
         Napier.d(tag = "FeedStore", message = "Action: $action")
+        sideEffect.tryEmit(FeedSideEffect.Error(Exception("Dispatch action")))
+
         val oldState = state.value
 
         val newState = when (action) {
